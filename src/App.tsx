@@ -4,6 +4,7 @@ import "./App.css";
 import HighchartsReact from "highcharts-react-official";
 import { useEffect, useState } from "react";
 import Highcharts from "highcharts/highstock";
+import { Box, Tabs, Text } from "@radix-ui/themes";
 
 function App() {
   const [chartData, setChartData] = useState<any>([
@@ -3222,7 +3223,41 @@ function App() {
 
   return (
     <>
-      <HighchartsReact highcharts={Highcharts} options={options} />
+      <Tabs.Root defaultValue="chart">
+        <Tabs.List>
+          <Tabs.Trigger value="summary">Summary</Tabs.Trigger>
+          <Tabs.Trigger value="chart">Chart</Tabs.Trigger>
+          <Tabs.Trigger value="statistics">Statistics</Tabs.Trigger>
+          <Tabs.Trigger value="analysis">Analysis</Tabs.Trigger>
+          <Tabs.Trigger value="settings">Settings</Tabs.Trigger>
+        </Tabs.List>
+
+        <Box pt="3">
+          <Tabs.Content value="summary">
+            <Text size="2">Make changes to your account.</Text>
+          </Tabs.Content>
+
+          <Tabs.Content value="chart">
+            <HighchartsReact highcharts={Highcharts} options={options} />
+          </Tabs.Content>
+
+          <Tabs.Content value="statistics">
+            <Text size="2">
+              Edit your profile or update contact information.
+            </Text>
+          </Tabs.Content>
+          <Tabs.Content value="analysis">
+            <Text size="2">
+              Edit your profile or update contact information.
+            </Text>
+          </Tabs.Content>
+          <Tabs.Content value="settings">
+            <Text size="2">
+              Edit your profile or update contact information.
+            </Text>
+          </Tabs.Content>
+        </Box>
+      </Tabs.Root>
     </>
   );
 }
