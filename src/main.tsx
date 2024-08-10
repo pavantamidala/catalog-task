@@ -9,7 +9,7 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Theme>
       <App />
-      <ThemePanel />
+      {/* <ThemePanel /> */}
     </Theme>
   </StrictMode>
 );
