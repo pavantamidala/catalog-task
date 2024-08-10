@@ -25,16 +25,16 @@ function TimeSeriesChart() {
     },
     rangeSelector: {
       buttons: [
-        {
-          type: "day",
-          count: 1,
-          text: "1D",
-        },
-        {
-          type: "day",
-          count: 3,
-          text: "3D",
-        },
+        // {
+        //   type: "day",
+        //   count: 1,
+        //   text: "1D",
+        // },
+        // {
+        //   type: "day",
+        //   count: 3,
+        //   text: "3D",
+        // },
         {
           type: "week",
           count: 1,
