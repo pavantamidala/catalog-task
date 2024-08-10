@@ -1,8 +1,16 @@
 import Highcharts from "highcharts/highstock";
 import HighchartsReact from "highcharts-react-official";
 import { CHART_DATA } from "../static/ChartData";
-
+import { Button, Flex } from "@radix-ui/themes";
+import { EnterFullScreenIcon, PlusCircledIcon } from "@radix-ui/react-icons";
+import { useRef } from "react";
+import exporting from "highcharts/modules/exporting";
+import fullscreen from "highcharts/modules/full-screen";
+exporting(Highcharts);
+fullscreen(Highcharts);
 function TimeSeriesChart() {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const chartComponentRef: any = useRef(null);
   const options = {
     chart: {
       zooming: {
@@ -11,6 +19,9 @@ function TimeSeriesChart() {
     },
     navigator: {
       enabled: true,
+    },
+    exporting: {
+      enabled: false, // Disable the hamburger icon (context menu)
     },
     rangeSelector: {
       buttons: [
@@ -72,18 +83,18 @@ function TimeSeriesChart() {
       },
       plotLines: [
         {
-          color: "red", // Color of the line
-          width: 2, // Width of the line
-          value: 1.2, // Value on the y-axis where the line should appear
-          dashStyle: "Dash", // Optional: dash style for the line
+          color: "rgba(153, 153, 153, 1)",
+          width: 2,
+          value: 0.8,
+          dashStyle: "Dash",
           label: {
-            text: "Threshold", // Label for the line
+            text: "0.8",
             align: "right",
             style: {
-              color: "red",
+              color: "rgba(153, 153, 153, 1)",
             },
           },
-          zIndex: 5, // Ensures the line is on top
+          zIndex: 5,
         },
       ],
     },
@@ -122,12 +133,44 @@ function TimeSeriesChart() {
     series: [
       {
         type: "area",
-        name: "USD to EUR",
+        name: "Test",
         data: CHART_DATA,
       },
     ],
   };
-  return <HighchartsReact highcharts={Highcharts} options={options} />;
+  const handleFullScreen = () => {
+    if (chartComponentRef.current) {
+      chartComponentRef.current?.chart.reflow();
+      chartComponentRef.current?.chart.fullscreen.toggle();
+    }
+  };
+
+  return (
+    <>
+      <Flex
+        gap={"2"}
+        style={{
+          position: "relative",
+          top: "34px",
+          zIndex: 1,
+          width: "fit-content",
+        }}
+      >
+        <Button onClick={handleFullScreen} variant="soft">
+          <EnterFullScreenIcon /> Fullscreen
+        </Button>
+        <Button variant="soft">
+          <PlusCircledIcon /> Compare
+        </Button>
+      </Flex>
+      <HighchartsReact
+        highcharts={Highcharts}
+        ref={chartComponentRef}
+        options={options}
+      />
+      ;
+    </>
+  );
 }
 
 export default TimeSeriesChart;

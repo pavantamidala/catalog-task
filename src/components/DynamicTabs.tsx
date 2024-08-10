@@ -1,7 +1,6 @@
 import React from "react";
-import { Box, Button, Flex, Tabs } from "@radix-ui/themes";
+import { Box, Tabs } from "@radix-ui/themes";
 import TimeSeriesChart from "./TimeSeriesChart";
-import { EnterFullScreenIcon, PlusCircledIcon } from "@radix-ui/react-icons";
 
 const tabs = [
   {
@@ -14,17 +13,6 @@ const tabs = [
     label: "Chart",
     content: (
       <>
-        <Flex
-          gap={"2"}
-          style={{ position: "relative", top: "34px", zIndex: 1 }}
-        >
-          <Button variant="soft">
-            <EnterFullScreenIcon /> Fullscreen
-          </Button>
-          <Button variant="soft">
-            <PlusCircledIcon /> Compare
-          </Button>
-        </Flex>
         <TimeSeriesChart />,
       </>
     ),
