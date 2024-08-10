@@ -25,16 +25,16 @@ function TimeSeriesChart() {
     },
     rangeSelector: {
       buttons: [
-        // {
-        //   type: "day",
-        //   count: 1,
-        //   text: "1D",
-        // },
-        // {
-        //   type: "day",
-        //   count: 3,
-        //   text: "3D",
-        // },
+        {
+          type: "day",
+          count: 1,
+          text: "1D",
+        },
+        {
+          type: "day",
+          count: 3,
+          text: "3D",
+        },
         {
           type: "week",
           count: 1,
@@ -64,6 +64,7 @@ function TimeSeriesChart() {
       selected: 4,
       inputEnabled: false,
       enabled: true,
+      allButtonsEnabled: true,
       buttonPosition: {
         align: "right",
       },
@@ -85,10 +86,10 @@ function TimeSeriesChart() {
         {
           color: "rgba(153, 153, 153, 1)",
           width: 2,
-          value: 0.8,
+          value: 5000,
           dashStyle: "Dash",
           label: {
-            text: "0.8",
+            text: "5000",
             align: "right",
             style: {
               color: "rgba(153, 153, 153, 1)",
@@ -129,6 +130,9 @@ function TimeSeriesChart() {
         },
         threshold: null,
       },
+    },
+    tooltip: {
+      valueDecimals: 2, // Format the numbers to 2 decimal places
     },
     series: [
       {
