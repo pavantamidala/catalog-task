@@ -25,5 +25,4 @@ function generateData(startYear: number, endYear: number) {
   return data;
 }
 
-console.log(JSON.stringify(generateData(2018, 2018)));
 export const CHART_DATA = generateData(2018, 2018);
