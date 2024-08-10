@@ -61,7 +61,7 @@ function TimeSeriesChart() {
           text: "Max",
         },
       ],
-      selected: 6,
+      selected: 0,
       inputEnabled: false,
       enabled: true,
       buttonPosition: {
